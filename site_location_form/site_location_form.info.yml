@@ -1,0 +1,6 @@
+name: Site Location Form
+type: module
+description: "Site Location Form"
+core_version_requirement: ^9 || ^10
+package: custom
+configure: site_location_form.admin_config

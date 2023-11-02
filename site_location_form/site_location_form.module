@@ -1,0 +1,46 @@
+<?php
+use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
+
+/**
+ * @file
+ * Implements hook_theme().
+ */
+
+/**
+ * {@inheritdoc}
+ */
+function site_location_form_theme($existing, $type, $theme, $path) {
+  return [
+    'site_location_time' => [
+      'variables' => [
+        'current_time' => NULL,
+        'current_date' => NULL,
+        'city' => NULL,
+        'location' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * @file
+ * Implements hook_install().
+ */
+
+/**
+ * {@inheritdoc}
+ */
+function site_location_form_install() {
+  \Drupal::configFactory()->getEditable('site_location_time.settings')
+    ->set('city', 'Kolkata')
+    ->set('country', 'India')
+    ->set('timezone', 'asia/kolkata')
+    ->save();
+}
+
+/**
+ * Implements hook_preprocess_page() for block templates.
+ */
+function site_location_form_preprocess_page(&$variables) {
+    \Drupal::service('cache_tags.invalidator')->invalidateTags(['custom_time_dependency']);
+}  

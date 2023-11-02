@@ -1,0 +1,5 @@
+site_location_form.admin:
+  title: 'Site Location Form'
+  parent: system.admin
+  route_name: site_location_form.admin_config
+  weight: 21

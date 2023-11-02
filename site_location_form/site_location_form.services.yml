@@ -1,0 +1,4 @@
+services:
+  site_location_and_time.service:
+    class: Drupal\site_location_form\Services\CurrentTimeLocation
+    arguments: ['@config.factory']
